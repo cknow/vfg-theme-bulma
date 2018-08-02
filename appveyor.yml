@@ -1,0 +1,23 @@
+build: false
+
+clone_depth: 1
+
+environment:
+  matrix:
+    - nodejs_version: 10
+    - nodejs_version: 9
+    - nodejs_version: 8
+    - nodejs_version: 6
+
+matrix:
+  fast_finish: true
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - yarn install
+
+test_script:
+  - node --version
+  - npm --version
+  - yarn --version
+  - npm test
