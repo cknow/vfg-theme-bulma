@@ -26,3 +26,70 @@
 ```bash
 npm install --save-dev @cknow/vfg-theme-bulma
 ```
+
+## Usage
+
+> **Note:** Do not forget to add the style sheets of theme to the header of the page.
+
+```js
+import Vfg from '@cknow/vfg';
+import VfgThemeBulma from '@cknow/vfg-theme-bulma';
+
+Vue.use(Vfg, {
+    theme: 'bulma'
+});
+Vue.use(VfgThemeBulma);
+```
+
+Component:
+
+```html
+<template>
+    <vfg :model="model" :schema="schema"></vfg>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                model: {
+                    name: 'Foo Bar',
+                    email: 'foo@bar.com',
+                },
+
+                schema: [
+                    {
+                        // input text is default
+                        label: 'Name',
+                        model: 'name'
+                    },
+                    {
+                        inputType: 'email',
+                        label: 'E-mail',
+                        model: 'email'
+                    }
+                ]
+            }
+        }
+    }
+</script>
+```
+
+Result:
+
+```html
+<div>
+    <div class="field">
+        <label class="label" for="name">Name:</label>
+        <div class="control">
+            <input class="input" type="text" id="name" value="Foo Bar">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label" for="email">E-mail:</label>
+        <div class="control">
+            <input class="input" type="email" id="email" value="foo@bar.com">
+        </div>
+    </div>
+</div>
+```
